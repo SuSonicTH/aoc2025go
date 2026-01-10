@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 )
 
 const baseUrl string = "https://adventofcode.com/2025/day/%d/input"
@@ -35,12 +36,12 @@ func main() {
 func downloadInput(day int) {
 	filepath := fmt.Sprintf(baseFilePath, day)
 	if _, err := os.Stat(filepath); err == nil {
-		fmt.Printf("input file %s for day %d already exists\n", filepath, day)
+		fmt.Printf("input file %s already exists\n", filepath)
 		return
 	}
 
 	session := util.ReadFile(".session")
-	fmt.Printf("Getting input data for day %d\n", day)
+	fmt.Printf("Getting input %s\n", filepath)
 
 	url := fmt.Sprintf(baseUrl, day)
 	req, err := http.NewRequest("GET", url, nil)
@@ -73,26 +74,83 @@ func downloadInput(day int) {
 func createDayDirectory(day int) (filepath string) {
 	filepath = fmt.Sprintf(baseDirectoryPath, day)
 	if _, err := os.Stat(filepath); err == nil {
-		fmt.Printf("directory %s for day %d already exists\n", filepath, day)
+		fmt.Printf("directory %s already exists\n", filepath)
 		return
 	}
 	os.Mkdir(filepath, 0755)
-	fmt.Printf("created directory %s for day %d\n", filepath, day)
+	fmt.Printf("created directory %s\n", filepath)
 	return
 }
+
+const sourceTemplate = `package main
+
+import (
+	"aoc2025/util"
+	"fmt"
+)
+	
+func main() {
+	fmt.Println("running day $DAY")
+	input := util.ReadInput($DAY)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
+}
+
+func Part1(input string) int {
+	return 0
+}
+
+func Part2(input string) int {
+	return 0
+}
+`
 
 func createDaySource(dir string, day int) {
 	filepath := fmt.Sprintf(baseSourcePath, dir, day)
 	if _, err := os.Stat(filepath); err == nil {
-		fmt.Printf("source file %s for day %d already exists\n", filepath, day)
+		fmt.Printf("source file %s already exists\n", filepath)
 		return
 	}
+	source := strings.Replace(sourceTemplate, "$DAY", strconv.Itoa(day), -1)
+	os.WriteFile(filepath, []byte(source), 0644)
+	fmt.Printf("created source file %s\n", filepath)
 }
+
+const testTemplate = `
+package main
+
+import (
+	"testing"
+)
+
+const input string = ` + "``" + `
+
+func Test_part1(t *testing.T) {
+	expected := 0
+	actual := Part1(input)
+
+	if expected != actual {
+		t.Errorf("expected %d, got %d", expected, actual)
+	}
+}
+
+func Test_part2(t *testing.T) {
+	expected := 0
+	actual := Part2(input)
+
+	if expected != actual {
+		t.Errorf("expected %d, got %d", expected, actual)
+	}
+}
+
+`
 
 func createDayTestSource(dir string, day int) {
 	filepath := fmt.Sprintf(baseTestPath, dir, day)
 	if _, err := os.Stat(filepath); err == nil {
-		fmt.Printf("test source file %s for day %d already exists\n", filepath, day)
+		fmt.Printf("test source file %s already exists\n", filepath)
 		return
 	}
+	os.WriteFile(filepath, []byte(testTemplate), 0644)
+	fmt.Printf("created test source file %s\n", filepath)
 }
