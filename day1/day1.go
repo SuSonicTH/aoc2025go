@@ -9,13 +9,6 @@ import (
 
 const day = 1
 
-func main() {
-	fmt.Printf("running day %d\n", day)
-	input := util.ReadInput(day)
-	util.TimedRun(1, Part1, input)
-	util.TimedRun(2, Part2, input)
-}
-
 func parse(input string) (rotations []int) {
 	lines := strings.Split(input, "\n")
 
@@ -76,4 +69,11 @@ func Part2(input string) int {
 		position = util.Mod(position, 100)
 	}
 	return zeroes
+}
+
+func main() {
+	fmt.Printf("running day %d\n", day)
+	input := util.ReadInput(day)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
 }

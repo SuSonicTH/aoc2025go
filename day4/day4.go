@@ -6,13 +6,6 @@ import (
 	"fmt"
 )
 
-func main() {
-	fmt.Println("running day 4")
-	input := util.ReadInput(4)
-	util.TimedRun(1, Part1, input)
-	util.TimedRun(2, Part2, input)
-}
-
 func Part1(input string) int {
 	grid := Grid.ReadGrid(input)
 	var count int = 0
@@ -52,4 +45,11 @@ func Part2(input string) int {
 			grid.Set(pos.x, pos.y, 'x')
 		}
 	}
+}
+
+func main() {
+	fmt.Println("running day 4")
+	input := util.ReadInput(4)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
 }

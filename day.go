@@ -89,19 +89,19 @@ import (
 	"fmt"
 )
 	
-func main() {
-	fmt.Println("running day $DAY")
-	input := util.ReadInput($DAY)
-	util.TimedRun(1, Part1, input)
-	util.TimedRun(2, Part2, input)
-}
-
 func Part1(input string) int {
 	return 0
 }
 
 func Part2(input string) int {
 	return 0
+}
+
+func main() {
+	fmt.Println("running day $DAY")
+	input := util.ReadInput($DAY)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
 }
 `
 

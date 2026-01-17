@@ -8,13 +8,6 @@ import (
 	"strings"
 )
 
-func main() {
-	fmt.Println("running day 3")
-	input := util.ReadInput(3)
-	util.TimedRun(1, Part1, input)
-	util.TimedRun(2, Part2, input)
-}
-
 func Part1(input string) int {
 	return solve(input, 2)
 }
@@ -56,4 +49,11 @@ func maxJoltage(bank string, batteries int) int {
 	}
 
 	return joltage
+}
+
+func main() {
+	fmt.Println("running day 3")
+	input := util.ReadInput(3)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
 }

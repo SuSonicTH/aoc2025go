@@ -7,13 +7,6 @@ import (
 	"strings"
 )
 
-func main() {
-	fmt.Println("running day 2")
-	input := util.ReadInput(2)
-	util.TimedRun(1, Part1, input)
-	util.TimedRun(2, Part2, input)
-}
-
 type Range struct {
 	from int
 	to   int
@@ -96,4 +89,11 @@ func isSubSeqValid(str string, seqLen int) bool {
 		}
 	}
 	return true
+}
+
+func main() {
+	fmt.Println("running day 2")
+	input := util.ReadInput(2)
+	util.TimedRun(1, Part1, input)
+	util.TimedRun(2, Part2, input)
 }
