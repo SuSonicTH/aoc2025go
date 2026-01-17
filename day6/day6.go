@@ -29,10 +29,10 @@ func calculate(calc *int, op byte, number int) {
 func Part1(input string) int {
 	numbers, ops := parse(input)
 
-	var result int = 0
-	var next int = 0
+	result := 0
+	next := 0
 	for pos := 0; pos < len(numbers[0]); {
-		var calc int = 0
+		calc := 0
 		for n, current := range numbers {
 			start := pos
 			for current[start] == ' ' {
@@ -65,7 +65,7 @@ func Part1(input string) int {
 func Part2(input string) int {
 	numbers, ops := parse(input)
 
-	var result int = 0
+	result := 0
 	for pos := len(ops) - 1; pos > 0; {
 		o := pos
 		for ops[o] == ' ' {
@@ -73,7 +73,7 @@ func Part2(input string) int {
 		}
 
 		fistNumber := true
-		var calc int = 0
+		calc := 0
 		for pos >= o {
 			number := parseNumber(numbers, pos)
 			if fistNumber {

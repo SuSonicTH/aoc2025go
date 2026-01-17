@@ -48,8 +48,8 @@ func Part1(input string) int {
 func Part2(input string) int {
 	rotations := parse(input)
 
-	var position int = 50
-	var zeroes int = 0
+	position := 50
+	zeroes := 0
 
 	for _, rot := range rotations {
 		if rot < 0 {

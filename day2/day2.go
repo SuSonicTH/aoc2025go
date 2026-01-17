@@ -43,7 +43,7 @@ func Part2(input string) int {
 
 func solve(input string, isValid validFunc) int {
 	ranges := parse(input)
-	var sum int = 0
+	sum := 0
 
 	for _, r := range ranges {
 		for i := r.from; i <= r.to; i++ {

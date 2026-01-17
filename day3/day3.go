@@ -17,7 +17,7 @@ func Part2(input string) int {
 }
 
 func solve(input string, battieries int) int {
-	var joltage int = 0
+	joltage := 0
 	for _, bank := range strings.Split(input, "\n") {
 		if len(bank) > 0 {
 			joltage += maxJoltage(bank, battieries)
@@ -27,8 +27,8 @@ func solve(input string, battieries int) int {
 }
 
 func maxJoltage(bank string, batteries int) int {
-	var last int = 0
-	var joltage int = 0
+	last := 0
+	joltage := 0
 
 	for battery := range batteries {
 		candidate := bank[last : last+1]

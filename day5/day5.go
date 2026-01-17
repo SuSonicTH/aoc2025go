@@ -66,7 +66,7 @@ func parse(input string) *Data {
 
 func Part1(input string) int {
 	data := parse(input)
-	var count int = 0
+	count := 0
 	for _, id := range data.products {
 		if data.isFresh(id) {
 			count++
@@ -90,7 +90,7 @@ func Part2(input string) int {
 		}
 	}
 
-	var count int = 0
+	count := 0
 	for _, r := range data.fresh {
 		if !r.deleted {
 			count += r.to - r.from + 1

@@ -8,7 +8,7 @@ import (
 
 func Part1(input string) int {
 	grid := Grid.ReadGrid(input)
-	var count int = 0
+	count := 0
 	for y := range grid.Height {
 		for x := range grid.Width {
 			if grid.Get(x, y) == '@' && grid.CountAdjecent(x, y, '@') < 4 {
@@ -26,7 +26,7 @@ type Pos struct {
 
 func Part2(input string) int {
 	grid := Grid.ReadGrid(input)
-	var count int = 0
+	count := 0
 
 	for {
 		candidates := []Pos{}

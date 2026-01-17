@@ -99,7 +99,7 @@ func (grid *Grid[T]) Print() *Grid[T] {
 }
 
 func (grid *Grid[T]) CountAdjecent(x, y int, value T) int {
-	var count int = 0
+	count := 0
 	for _, yv := range []int{-1, 0, +1} {
 		for _, xv := range []int{-1, 0, +1} {
 			if xv == 0 && yv == 0 {
