@@ -112,3 +112,21 @@ func (grid *Grid[T]) CountAdjecent(x, y int, value T) int {
 	}
 	return count
 }
+
+func (grid *Grid[T]) FindInRow(y int, value T) int {
+	for x := range grid.Width {
+		if grid.Get(x, y) == value {
+			return x
+		}
+	}
+	return -1
+}
+
+func (grid *Grid[T]) FindInColumn(x int, value T) int {
+	for y := range grid.Height {
+		if grid.Get(x, y) == value {
+			return y
+		}
+	}
+	return -1
+}
